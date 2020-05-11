@@ -1,0 +1,11 @@
+[package]
+name = "tuner"
+version = "0.1.0"
+authors = ["Pedro Alves <pta2002@pta2002.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+aubio-rs = "0.1.3"
+jack = "0.6.2"

@@ -44,10 +44,10 @@ fn main() {
         .unwrap();
 
     while let Ok(audio_input) = rx.recv() {
-        println!(
-            "Freq: {}",
-            pitch_detector.do_result(audio_input).unwrap_or(0.0)
-        );
+        let freq = pitch_detector.do_result(audio_input).unwrap_or(0.0);
+        let abs_note = tuner::note::Note::new(440.0, freq).abs_note();
+
+        println!("Freq: {} Note: {}", freq, abs_note.as_text());
     }
 }
 

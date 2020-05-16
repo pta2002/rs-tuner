@@ -1,6 +1,8 @@
 use aubio_rs::{Pitch, PitchMode};
 use jack::PortFlags as PF;
 use std::convert::TryInto;
+use tuner::note::Note;
+use tuner::ui::Ui;
 
 fn main() {
     // Initialize JACK
@@ -43,11 +45,18 @@ fn main() {
         .connect_ports_by_name(&output_port, &input_name)
         .unwrap();
 
+    let mut ui = Ui::new();
+
+    ctrlc::set_handler(move || {
+        Ui::enable_cursor();
+        std::process::exit(0);
+    })
+    .expect("Failed to set Ctrl+C handler");
+
     while let Ok(audio_input) = rx.recv() {
         let freq = pitch_detector.do_result(audio_input).unwrap_or(0.0);
-        let abs_note = tuner::note::Note::new(440.0, freq).abs_note();
 
-        println!("Freq: {} Note: {}", freq, abs_note.as_text());
+        ui.show(Note::new(440.0, freq));
     }
 }
 

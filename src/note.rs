@@ -23,7 +23,7 @@ impl Note {
     /// # Examples
     /// ```
     /// let base = 440.0;
-    /// let note = tuner::note::Note::new(base, 220.0).unwrap();
+    /// let note = tuners::note::Note::new(base, 220.0).unwrap();
     ///
     /// assert_eq!(note.octaves, -1);
     /// assert_eq!(note.semitones, 0);
@@ -57,7 +57,7 @@ impl Note {
     ///
     /// # Examples
     /// ```
-    /// let note = tuner::note::Note::new(440.0, 440.0).unwrap();
+    /// let note = tuners::note::Note::new(440.0, 440.0).unwrap();
     /// let abs = note.abs_note();
     ///
     /// assert_eq!(abs.octave, 4);
@@ -66,7 +66,7 @@ impl Note {
     /// ```
     ///
     /// ```
-    /// let note = tuner::note::Note::new(440.0, 82.407).unwrap();
+    /// let note = tuners::note::Note::new(440.0, 82.407).unwrap();
     /// let abs = note.abs_note();
     ///
     /// assert_eq!(abs.octave, 2);
@@ -100,7 +100,7 @@ impl AbsNote {
     ///
     /// # Examples
     /// ```
-    /// use tuner::note::AbsNote;
+    /// use tuners::note::AbsNote;
     /// let note = AbsNote::new(2, 3, 0, 440.0);
     /// assert_eq!(note.name(), "C");
     /// ```

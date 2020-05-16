@@ -155,24 +155,13 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "05da548ad6865900e60eaba7f589cc0783590a92e940c26953ff81ddbab2d677"
 
 [[package]]
-name = "term_size"
-version = "0.3.2"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1e4129646ca0ed8f45d09b929036bafad5377103edd06e50bf574b353d2b08d9"
-dependencies = [
- "libc",
- "winapi 0.3.8",
-]
-
-[[package]]
-name = "tuner"
-version = "0.1.0"
+name = "tuners"
+version = "0.2.0"
 dependencies = [
  "aubio-rs",
  "crossbeam-channel",
  "ctrlc",
  "jack",
- "term_size",
 ]
 
 [[package]]

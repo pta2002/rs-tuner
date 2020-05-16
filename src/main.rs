@@ -1,8 +1,8 @@
 use aubio_rs::{Pitch, PitchMode};
 use jack::PortFlags as PF;
 use std::convert::TryInto;
-use tuner::note::Note;
-use tuner::ui::Ui;
+use tuners::note::Note;
+use tuners::ui::Ui;
 
 fn main() {
     // Initialize JACK

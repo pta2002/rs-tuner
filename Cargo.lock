@@ -130,6 +130,49 @@ dependencies = [
 ]
 
 [[package]]
+name = "libpulse-binding"
+version = "2.16.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "35b35c3c377b537d044107ff0830b4e5ae32a5c106289977a04b3387a143e994"
+dependencies = [
+ "libc",
+ "libpulse-sys",
+ "winapi 0.3.8",
+]
+
+[[package]]
+name = "libpulse-simple-binding"
+version = "2.16.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a4ef3ce750cdbce60fc96aac1f6dad84d67419d2307a05a27b73700f1f5d33e0"
+dependencies = [
+ "libpulse-binding",
+ "libpulse-simple-sys",
+ "libpulse-sys",
+]
+
+[[package]]
+name = "libpulse-simple-sys"
+version = "1.13.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "88d5e2cc71fee20c6ce410f3cc7430f067d5c63a5c3b11ea7e45cce1bfae19bd"
+dependencies = [
+ "libpulse-sys",
+ "pkg-config",
+]
+
+[[package]]
+name = "libpulse-sys"
+version = "1.13.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b4c5aecc8dd651c60c212267ef9599a6be8765e63509816695f96a91b1e06151"
+dependencies = [
+ "libc",
+ "pkg-config",
+ "winapi 0.3.8",
+]
+
+[[package]]
 name = "maybe-uninit"
 version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -162,6 +205,7 @@ dependencies = [
  "crossbeam-channel",
  "ctrlc",
  "jack",
+ "libpulse-simple-binding",
 ]
 
 [[package]]

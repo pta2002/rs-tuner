@@ -7,7 +7,6 @@ use crate::ui::escape::{Color, EscapeCode};
 #[derive(Default)]
 pub struct Ui {}
 
-// const DOT_NORMAL: char = '⚫';
 const DOT_NORMAL: char = '•';
 const DOT_EQUAL: char = '•';
 
@@ -19,8 +18,6 @@ impl Ui {
     }
 
     pub fn show(&mut self, note: Option<Note>) {
-        // let (w, h) = term_size::dimensions().unwrap_or((80, 80));
-
         print!("\r");
         match note {
             Some(note) => {
@@ -137,8 +134,3 @@ mod tests {
         assert_eq!(get_highlighted_dot(&note), 10);
     }
 }
-
-//
-// * * * * *  E2  * * * * *
-// * * * * * _ * * * * *
-//

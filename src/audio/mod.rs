@@ -2,6 +2,7 @@
 
 pub struct AudioConnection {
     server: AudioConnectionServer,
+    client: AudioClient,
 }
 
 impl AudioConnection {
@@ -14,7 +15,14 @@ impl AudioConnection {
     }
 
     fn connect_jack() -> Option<AudioConnection> {
-        AudioConnection { server: JACK }
+        let (client, _) = jack::Client::new("tuner", jack::ClientOptions::NO_START_SERVER)?;
+
+        let input_port = client.register_port("input", jack::AudioIn)?;
+
+        AudioConnection {
+            server: JACK,
+            client: JACK(client),
+        }
     }
 
     fn connect_pulse() -> Option<AudioConnection> {

@@ -1,7 +1,10 @@
 mod escape;
+mod gui;
 
 use crate::note::{AbsNote, Note};
 use crate::ui::escape::{Color, EscapeCode};
+
+pub use gui::Gui;
 
 /// Stores the state of the terminal's UI, such as number of lines scrolled, terminal width, etc.
 #[derive(Default)]

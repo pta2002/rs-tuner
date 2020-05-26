@@ -2,7 +2,7 @@ use aubio_rs::{Pitch, PitchMode};
 use jack::PortFlags as PF;
 use std::convert::TryInto;
 use tuners::note::Note;
-use tuners::ui::Ui;
+use tuners::ui::Gui;
 
 fn main() {
     // Initialize JACK
@@ -45,18 +45,21 @@ fn main() {
         .connect_ports_by_name(&output_port, &input_name)
         .unwrap();
 
-    let mut ui = Ui::new();
+    let mut gui = Gui::new();
 
     ctrlc::set_handler(move || {
-        Ui::enable_cursor();
+        // Ui::enable_cursor();
         std::process::exit(0);
     })
     .expect("Failed to set Ctrl+C handler");
 
+    // I should probably run the UI on a separate thread!
+    // I mean it's already running but yk, update every 60 seconds or so
+
     while let Ok(audio_input) = rx.recv() {
         let freq = pitch_detector.do_result(audio_input).unwrap_or(0.0);
 
-        ui.show(Note::new(440.0, freq));
+        //ui.show(Note::new(440.0, freq));
     }
 }
 

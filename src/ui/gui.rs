@@ -3,8 +3,11 @@
 /// Initialize the GUI context
 ///
 /// TODO: Return a Result with a proper type
+use sdl2::event::Event;
+
 pub struct Gui {
     canvas: sdl2::render::WindowCanvas,
+    context: sdl2::Sdl
 }
 
 impl Gui {
@@ -25,6 +28,16 @@ impl Gui {
 
         canvas.window_mut().show();
 
-        Some(Gui { canvas })
+        Some(Gui { canvas, context: sdl_context })
+    }
+
+    pub fn draw(&mut self) {
+        let mut event_pump = self.context.event_pump().unwrap();
+        for event in event_pump.poll_iter() {
+            match event {
+                Event::Quit {..} => std::process::exit(0),
+                _ => {}
+            }
+        }
     }
 }

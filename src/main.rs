@@ -45,7 +45,7 @@ fn main() {
         .connect_ports_by_name(&output_port, &input_name)
         .unwrap();
 
-    let mut gui = Gui::new();
+    let mut gui = Gui::new().unwrap();
 
     ctrlc::set_handler(move || {
         // Ui::enable_cursor();
@@ -60,6 +60,7 @@ fn main() {
         let freq = pitch_detector.do_result(audio_input).unwrap_or(0.0);
 
         //ui.show(Note::new(440.0, freq));
+        gui.draw();
     }
 }
 
